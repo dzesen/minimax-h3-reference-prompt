@@ -1,0 +1,4 @@
+interface:
+  display_name: "MiniMax H3 Reference Prompt"
+  short_description: "Convert multilingual briefs into H3 Ref2VA prompts"
+  default_prompt: "Use $minimax-h3-reference-prompt to convert this brief into a validated H3 reference-video prompt."
