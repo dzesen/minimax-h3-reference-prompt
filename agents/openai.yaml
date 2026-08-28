@@ -1,4 +1,4 @@
 interface:
   display_name: "MiniMax H3 Reference Prompt"
-  short_description: "Write or reverse-reconstruct H3 Ref2VA prompts"
-  default_prompt: "Use $minimax-h3-reference-prompt to convert this brief or reverse-reconstruct this media as a validated H3 Ref2VA prompt."
+  short_description: "Compile, validate, revise, or reconstruct H3 Ref2VA prompts"
+  default_prompt: "Use $minimax-h3-reference-prompt to compile, review, revise, or reverse-reconstruct this reference-based request as a validated MiniMax H3 Ref2VA prompt."
