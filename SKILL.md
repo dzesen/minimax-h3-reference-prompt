@@ -1,19 +1,21 @@
 ---
 name: minimax-h3-reference-prompt
-description: Convert, expand, or review reference-based video briefs in any language as production-ready MiniMax H3 Ref2VA prompts. Use when images, videos, or audio define subjects, keyframes, motion, style, editing sources, continuation, voice, or soundtrack relationships and the output should use the six-section subject_definitions format. Do not use for text-only T2VA briefs with no reference asset.
+description: Convert, review, or reverse-reconstruct reference-based video briefs and media in any language as production-ready MiniMax H3 Ref2VA prompts. Use when images, videos, or audio define subjects, keyframes, motion, style, editing sources, continuation, voice, or soundtrack relationships, including requests to recreate an observed result as a six-section subject_definitions prompt. Do not use for text-only T2VA briefs with no reference asset.
 ---
 
 # MiniMax H3 Reference Prompt
 
-Compile multilingual briefs into the canonical MiniMax H3 full-reference structure without changing the user's creative intent.
+Compile multilingual briefs or observed media into the canonical MiniMax H3 full-reference structure without changing the user's creative intent or claiming to recover unavailable generation data.
 
 ## Workflow
 
-1. Read [references/format-spec.md](references/format-spec.md) completely before drafting, revising, or reviewing a prompt.
-2. Extract the target duration, aspect ratio, reference assets and roles, preserved subject traits, shot beats, camera paths, spoken or visible text, physical sounds, and audience-only music.
-3. Resolve only execution-level ambiguity. Preserve every explicit creative choice. If duration is missing, use 10 seconds; if aspect ratio is missing, infer it from the intended platform or reference composition and disclose that assumption in one short line outside the prompt.
-4. Build a continuous audiovisual timeline, then compile the six sections in the exact order from the format specification.
-5. Run the preflight in the format specification. Repair every failed check before returning the prompt.
+1. Identify the request as forward conversion, review/revision, or reverse reconstruction.
+2. Read [references/format-spec.md](references/format-spec.md) completely before drafting, revising, or reviewing a prompt. For reverse reconstruction, also read [references/reverse-reconstruction.md](references/reverse-reconstruction.md) completely before inspecting the media.
+3. For forward conversion, extract the target duration, aspect ratio, reference assets and roles, preserved subject traits, shot beats, camera paths, spoken or visible text, physical sounds, and audience-only music.
+4. For reverse reconstruction, build the evidence ledger and reconstruction plan required by the reverse-reconstruction reference. Treat visible or audible evidence separately from inference.
+5. Resolve only execution-level ambiguity. Preserve every explicit creative choice. If duration is missing, use 10 seconds; if aspect ratio is missing, infer it from the intended platform or reference composition and disclose that assumption in one short line outside the prompt.
+6. Build a continuous audiovisual timeline, then compile the six sections in the exact order from the format specification.
+7. Run every applicable preflight. Repair each failed check before returning the prompt.
 
 ## Language Contract
 
@@ -37,4 +39,6 @@ For a new or revised prompt, return one copy-ready plain-text block containing t
 
 For review-only requests, lead with the highest-impact issues in concise prose. Do not rewrite the prompt unless the user asks for a revision or optimization.
 
-If the request contains no real or named reference image, video, or audio, explain that this Ref2VA skill must not fabricate reference labels. Recommend an H3 base-mode prompt instead, or ask for the intended reference asset when the user specifically requires the six-section format.
+For reverse-reconstruction requests, return a concise reconstruction note followed by one copy-ready prompt block. The note distinguishes observed evidence, inference, and unavailable information; it is not part of the H3 prompt. Describe the result as a reconstruction, never as the recovered original prompt.
+
+If the generation run will contain no real or named reference image, video, or audio, explain that this Ref2VA skill must not fabricate reference labels. Recommend an H3 base-mode prompt instead, including when the user wants a text-only recreation of finished media that will not remain attached as a reference.
